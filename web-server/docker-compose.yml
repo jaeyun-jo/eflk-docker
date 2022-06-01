@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  webserver:
+    container_name: web-server
+    image: elfk/web-server
+    ports:
+      - "80:80"
+    networks:
+      - elk  
+    volumes:
+      - type: bind
+        source: ./filebeat.yml
+        target: /etc/filebeat/filebeat.yml
+networks:
+  elk:
+    driver: bridge
